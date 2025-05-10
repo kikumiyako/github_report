@@ -54,7 +54,7 @@ class GithubRestPrFetcher
   def fetch_csv(flatten: false)
     result = []
 
-    (42..@max_pages).each do |page|
+    (1..@max_pages).each do |page|
       Rails.logger.info "Fetching PR list page #{page}..."
       prs = fetch_prs(page)
       break if prs.empty?

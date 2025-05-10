@@ -7,11 +7,11 @@ class GithubReportsController < ApplicationController
 
     begin
       fetcher = GithubRestPrFetcher.new(
-        owner: "diggle-jp",
-        repo: "cabernet",
+        owner: ENV["OWNER"],
+        repo: ENV["REPO"],
         token: ENV["GITHUB_TOKEN"],
-        per_page: 100,
-        max_pages: 61
+        per_page: 3,
+        max_pages: 1
       )
       # データ取得
       pr_file_changes = fetcher.fetch_csv
@@ -50,53 +50,4 @@ class GithubReportsController < ApplicationController
     end
   end
 
-  # def index
-  #   fetcher = GithubPrFileFetcher.new(
-  #     owner: "diggle-jp", # あなたの org またはユーザー
-  #     repo: "cabernet", # リポジトリ名
-  #     count: 100
-  #   )
-  #   @file_summary = fetcher.fetch
-  #   respond_to do |format|
-  #     format.html
-  #     format.csv do
-  #       send_data generate_csv(@file_summary),
-  #                 filename: "github_file_change_summary_#{Time.zone.today}.csv"
-  #     end
-  #   end
-  # end
-  #
-  # require 'csv'
-  #
-  # def generate_csv(data)
-  #   CSV.generate(headers: true) do |csv|
-  #     max_prs = data.map { |row| row[:pr_infos].size }.max || 0
-  #     header = ['path', 'count', 'last_merged_at']
-  #     max_prs.times { |i| header << "pr#{i + 1}" }
-  #     csv << header
-  #
-  #     data.each do |row|
-  #       line = [
-  #         row[:path],
-  #         row[:count],
-  #         row[:last_merged_at].strftime('%Y-%m-%d')
-  #       ]
-  #
-  #       row[:pr_infos].each do |pr|
-  #         line << "##{pr[:number]}: #{pr[:title]} (#{pr[:merged_at].strftime('%Y-%m-%d')})"
-  #       end
-  #
-  #       csv << line
-  #     end
-  #   end
-  # end
-
-  # def index
-  #   @pulls = GithubPullRequestService.new(
-  #     owner: "diggle-jp",
-  #     repo: "cabernet",
-  #     author: "kikumiyako",
-  #     count: 10 # fetch count
-  #   ).fetch
-  # end
 end
