@@ -1,0 +1,26 @@
+<h2>PRファイル変更一覧（1行 = 1ファイル）</h2>
+<%= link_to "📄 CSVダウンロード", github_reports_path(format: :csv), class: "btn btn-primary" %>
+<table border="1" cellpadding="5">
+  <thead>
+  <tr>
+    <th>PR番号</th>
+    <th>PRタイトル</th>
+    <th>マージ日</th>
+    <th>ファイル</th>
+    <th>追加行</th>
+    <th>削除行</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @pr_file_changes.each do |entry| %>
+    <tr>
+      <td>#<%= entry[:pr_number] %></td>
+      <td><%= entry[:title] %></td>
+      <td><%= entry[:merged_at].strftime('%Y-%m-%d') %></td>
+      <td><%= entry[:path] %></td>
+      <td><%= entry[:additions] %></td>
+      <td><%= entry[:deletions] %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

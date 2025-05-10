@@ -1,0 +1,126 @@
+<p>
+  <%= link_to "📄 CSVダウンロード", github_reports_index_path(format: :csv), class: "btn btn-primary" %>
+</p>
+<h2>masterブランチにマージされたPRとマージ日時</h2>
+<table border="1" cellpadding="5">
+  <thead>
+  <tr>
+    <th>ファイル</th>
+    <th>カウント</th>
+    <th>ラストPR</th>
+    <th>PR番号・タイトル・マージ日</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @file_summary.each do |entry| %>
+    <tr>
+      <td><%= entry[:path] %></td>
+      <td><%= entry[:count] %></td>
+      <td>#<%= entry[:pr_infos].first[:number] %>: <%= entry[:pr_infos].first[:title] %> (<%= entry[:pr_infos].first[:merged_at].strftime('%Y-%m-%d') %>)</td>
+      <td>
+        <ul>
+          <% entry[:pr_infos].each do |pr| %>
+            <li>
+              #<%= pr[:number] %>: <%= pr[:title] %> (<%= pr[:merged_at].strftime('%Y-%m-%d') %>)
+            </li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<!--<h2>ファイル別変更サマリ（PR コメント付き）</h2>-->
+<!--<table>-->
+<!--  <thead>-->
+<!--  <tr>-->
+<!--    <th>ファイル</th>-->
+<!--    <th>最終マージ日時</th>-->
+<!--    <th>更新回数</th>-->
+<!--    <th>Additions</th>-->
+<!--    <th>Deletions</th>-->
+<!--    <th>関連PR</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+  <%# @file_summary.each do |entry| %>
+<!--    <tr>-->
+<!--      <td><%#= entry[:path] %></td>-->
+<!--      <td><%#= entry[:last_merged_at].strftime('%Y-%m-%d') %></td>-->
+<!--      <td><%#= entry[:last_merged_at] %></td>-->
+<!--      <td>-->
+<!--        <ul>-->
+          <%# entry[:last_merged_at].each do |v| %>
+<!--            <li><%#= v %></li>-->
+          <%# end %>
+<!--        </ul>-->
+<!--      </td>-->
+<!--      <td><%#= entry[:count] %></td>-->
+<!--      <td><%#= entry[:additions] %></td>-->
+<!--      <td><%#= entry[:deletions] %></td>-->
+<!--      <td>-->
+<!--        <ul>-->
+          <%# entry[:pr_titles].each do |pr| %>
+<!--            <li><%#= pr %></li>-->
+          <%# end %>
+<!--        </ul>-->
+<!--      </td>-->
+<!--    </tr>-->
+  <%# end %>
+<!--  </tbody>-->
+<!--</table>-->
+
+<!--<h2>Refactoring Priority Ranking</h2>-->
+
+<!--<table>-->
+<!--  <thead>-->
+<!--  <tr>-->
+<!--    <th>File</th>-->
+<!--    <th>Score</th>-->
+<!--    <th>Changes</th>-->
+<!--    <th>Total Lines Changed</th>-->
+<!--    <th>Recency</th>-->
+<!--    <th>Last Updated</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+  <%# @file_scores.each do |entry| %>
+<!--    <tr>-->
+<!--      <td><%#= entry[:path] %></td>-->
+<!--      <td><%#= entry[:score] %></td>-->
+<!--      <td><%#= entry[:changes] %></td>-->
+<!--      <td><%#= entry[:lines] %></td>-->
+<!--      <td><%#= entry[:recency] %></td>-->
+<!--      <td><%#= entry[:last_updated_at].strftime('%Y-%m-%d') %></td>-->
+<!--    </tr>-->
+  <%# end %>
+<!--  </tbody>-->
+<!--</table>-->
+
+<!--<h1>GitHub PR File Changes</h1>-->
+
+<!--<table>-->
+<!--  <thead>-->
+<!--  <tr>-->
+<!--    <th>File</th>-->
+<!--    <th>PR #</th>-->
+<!--    <th>Merged At</th>-->
+<!--    <th>Additions</th>-->
+<!--    <th>Deletions</th>-->
+<!--    <th>Author</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+  <%# @file_changes.each do |change| %>
+<!--    <tr>-->
+<!--      <td><%#= change[:path] %></td>-->
+<!--      <td>#<%#= change[:pr_number] %></td>-->
+<!--      <td><%#= change[:merged_at] %></td>-->
+<!--      <td><%#= change[:additions] %></td>-->
+<!--      <td><%#= change[:deletions] %></td>-->
+<!--      <td><%#= change[:author] %></td>-->
+<!--    </tr>-->
+  <%# end %>
+<!--  </tbody>-->
+<!--</table>-->

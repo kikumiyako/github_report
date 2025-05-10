@@ -1,0 +1,13 @@
+<!-- app/views/github_reports/index.html.erb -->
+<h1>GitHub Pull Requests</h1>
+
+<% @pulls.each do |pr| %>
+  <div style="margin-bottom: 1em;">
+    <strong>#<%= pr[:number] %>: <%= pr[:title] %></strong><br>
+    <a href="<%= pr[:url] %>" target="_blank">View PR</a><br>
+    Merged: <%= pr[:merged_at] %><br>
+    Author: <%= pr[:author] %><br>
+    Files Changed: <%= pr[:changed_files] %><br>
+    Lines: +<%= pr[:additions] %>, -<%= pr[:deletions] %>
+  </div>
+<% end %>
