@@ -78,7 +78,7 @@ GEM
     base64 (0.2.0)
     bcrypt_pbkdf (1.1.1)
     benchmark (0.4.0)
-    bigdecimal (3.1.9)
+    bigdecimal (3.2.0)
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
@@ -106,7 +106,7 @@ GEM
     dotenv-rails (3.1.8)
       dotenv (= 3.1.8)
       railties (>= 6.1)
-    drb (2.2.1)
+    drb (2.2.3)
     ed25519 (1.4.0)
     erubi (1.13.1)
     et-orbi (1.2.11)
@@ -117,11 +117,11 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    graphql (2.5.6)
+    graphql (2.5.8)
       base64
       fiber-storage
       logger
-    graphql-client (0.25.0)
+    graphql-client (0.26.0)
       activesupport (>= 3.0)
       graphql (>= 1.13.0)
     httparty (0.23.1)
